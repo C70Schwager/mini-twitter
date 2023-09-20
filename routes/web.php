@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\TweetController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,11 +19,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('tweet', function () {
-    return 'Das ist meine erste Route!';
-});
 
-Route::get('tweets', function () {
-    return view('tweets.index');
-});
+// Route::get('tweets', function () {
+//     return view('tweets.index');
+// });
 
+// Route::get('tweets/create', function () {
+//     return view('tweets.create');
+// });
+
+// Route::get('tweets/show', function () {
+//     return view('tweets.show');
+// });
+
+
+
+
+Route::get('tweets', [TweetController::class,'index']); 
+
+Route::get('tweets/create', [TweetController::class,'create']);
+
+Route::get('tweets/show', [TweetController::class,'show']);
