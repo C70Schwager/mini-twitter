@@ -35,8 +35,12 @@ Route::get('/', function () {
 
 
 
-Route::get('tweets', [TweetController::class,'index']); 
+Route::get('tweets', [TweetController::class,'index'])->name('eingabe'); 
 
 Route::get('tweets/create', [TweetController::class,'create']);
 
-Route::get('tweets/show', [TweetController::class,'show']);
+Route::post('tweets/store', [TweetController::class,'store']);
+
+Route::get('tweets/{id}', [TweetController::class,'show']);
+
+Route::delete('tweets/{id}', [TweetController::class, 'destroy'])-> name('tweets.destroy');
